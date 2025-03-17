@@ -5,13 +5,15 @@ on:
     tags:
       - "daily-release-[0-9]+"
   workflow_dispatch:
-  
+
 env:
   CARGO_TERM_COLOR: always
 
 jobs:
   zed:
     runs-on: windows-latest
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout sources
@@ -43,3 +45,4 @@ jobs:
           file: ./zed/target/release/zed.exe
           tag: ${{ github.ref_name }}
           overwrite: true
+          make_latest: false  # Add this to avoid issues with "latest" release
