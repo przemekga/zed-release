@@ -4,6 +4,7 @@ on:
   push:
     tags:
       - "daily-release-[0-9]+"
+  workflow_dispatch:
 
 env:
   CARGO_TERM_COLOR: always
